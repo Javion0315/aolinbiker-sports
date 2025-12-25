@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html <%= htmlAttrs %> data-css="pending">
+  <head <%= headAttrs %>>
+    <%= head %>
+
+    <!-- 最早期的 FOUC 防護：在 Vue/Tailwind 還沒生效前，先黑底遮罩 + 隱藏內容 -->
+    <style>
+      html,
+      body {
+        background: #000;
+        color: #fff;
+      }
+      /* Nuxt root：先隱藏，避免「沒套 style 的白屏」 */
+      #__nuxt {
+        opacity: 0;
+      }
+      /* 早期遮罩：完全不依賴 Tailwind */
+      #aolin-precss-overlay {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        color: #fff;
+        z-index: 2147483647;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+      }
+      #aolin-precss-overlay .brand {
+        letter-spacing: 0.35em;
+        font-size: 12px;
+        opacity: 0.8;
+        text-align: center;
+      }
+      #aolin-precss-overlay .sub {
+        margin-top: 10px;
+        font-weight: 900;
+        font-style: italic;
+        font-size: 40px;
+        text-align: center;
+      }
+      #aolin-precss-overlay .track {
+        margin-top: 24px;
+        height: 8px;
+        width: min(520px, 100%);
+        background: rgba(255, 255, 255, 0.12);
+        overflow: hidden;
+      }
+      #aolin-precss-overlay .bar {
+        height: 100%;
+        width: 35%;
+        background: #ef4444;
+      }
+    </style>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        root.dataset.css = root.dataset.css || "pending";
+
+        function isCssReady() {
+          try {
+            var v = getComputedStyle(root).getPropertyValue("--aolin-css-ready").trim();
+            return v === "1";
+          } catch (e) {
+            return false;
+          }
+        }
+
+        function setReady() {
+          root.dataset.css = "ready";
+          var ov = document.getElementById("aolin-precss-overlay");
+          if (ov) ov.parentNode.removeChild(ov);
+          var app = document.getElementById("__nuxt");
+          if (app) app.style.opacity = "1";
+          try {
+            window.dispatchEvent(new Event("aolin:css-ready"));
+          } catch (e) {}
+        }
+
+        var done = false;
+        function tick() {
+          if (done) return;
+          if (isCssReady()) {
+            done = true;
+            return setReady();
+          }
+          requestAnimationFrame(tick);
+        }
+
+        // 最多等 3 秒，避免極端狀況卡住
+        setTimeout(function () {
+          if (done) return;
+          done = true;
+          setReady();
+        }, 3000);
+
+        tick();
+      })();
+    </script>
+
+    <noscript>
+      <style>
+        #__nuxt {
+          opacity: 1 !important;
+        }
+        #aolin-precss-overlay {
+          display: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+
+  <body <%= bodyAttrs %>>
+    <div id="aolin-precss-overlay" aria-hidden="true">
+      <div>
+        <div class="brand">AOLINBIKER</div>
+        <div class="sub">SPORTS</div>
+        <div class="track"><div class="bar"></div></div>
+      </div>
+    </div>
+
+    <%= body %>
+  </body>
+</html>
+
+
