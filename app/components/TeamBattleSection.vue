@@ -1,6 +1,6 @@
 <template>
   <section id="teams" class="relative z-30 -mt-4 overflow-hidden bg-black py-0">
-    <div class="flex h-auto flex-col md:h-[80vh] md:flex-row">
+    <div class="flex h-[850px] flex-col sm:h-[1200px] md:h-[80vh] md:flex-row">
       <div v-for="team in teams" :key="team.key"
         class="aolin-team-panel group relative h-[400px] cursor-pointer overflow-hidden border-r border-white/10 last:border-0 md:h-full">
         <!-- Background Image Layer -->
@@ -13,9 +13,10 @@
 
         <!-- Content Overlay -->
         <div class="absolute inset-0 z-20 flex flex-col justify-end p-8 sm:p-10 md:p-12">
-          <div class="translate-y-0 transition-transform duration-500 group-hover:-translate-y-4">
-            <span class="mb-4 block text-4xl">{{ team.icon }}</span>
-            <h3 class="text-5xl font-black italic leading-none text-white md:text-6xl">
+          <div class="translate-y-0 transition-transform duration-500 group-hover:-translate-y-4  mk">
+            <span class="mb-4 hidden md:block text-4xl">{{ team.icon }}</span>
+            <h3
+              class="text-5xl sm:text-4xl hidden md:block whitespace-nowrap  font-black italic leading-none text-white md:text-5xl lg:text-6xl">
               {{ team.name }}
             </h3>
             <p

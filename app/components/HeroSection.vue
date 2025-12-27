@@ -41,15 +41,15 @@
 
       <!-- Title（Overflow hidden + 由下往上推入） -->
       <h1 class="mb-8 mt-4 font-black italic leading-[1.2] tracking-tight text-white drop-shadow-2xl">
-        <span class="block text-[9vw] md:text-[8vw]">
+        <span class="block text-[9vw] md:text-[6vw]">
           <!-- TODO(animation): y: 100% -> 0 -->
           <span class="aolin-hero-line aolin-hero-line-1 block">團隊挑戰 × 一整年🔥</span>
         </span>
-        <span class="block text-[9vw] md:text-[8vw]">
+        <span class="block text-[9vw] md:text-[6vw]">
           <!-- TODO(animation): y: 100% -> 0 -->
           <span class="aolin-hero-line aolin-hero-line-2 block aolin-text-stroke">用汗水累積榮耀</span>
         </span>
-        <span class="block text-[9vw] md:text-[8vw]">
+        <span class="block text-[9vw] md:text-[6vw]">
           <!-- TODO(animation): y: 100% -> 0 -->
           <span class="aolin-hero-line aolin-hero-line-3 block text-red-600">傲臨彼客運動會</span>
         </span>
