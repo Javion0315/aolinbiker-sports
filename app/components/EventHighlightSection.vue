@@ -20,7 +20,7 @@
             class="aolin-highlights-title font-black italic leading-[0.75] tracking-tighter text-5xl sm:text-6xl md:text-7xl lg:text-9xl">
             <span class="block">2026</span>
             <span class="block">
-              <span class="aolin-text-stroke text-white/20">ANNUAL</span><br class="hidden sm:block" />
+              <span class="md:aolin-text-stroke text-white/20">ANNUAL</span><br class="hidden sm:block" />
               <span class="sm:ml-0">PREVIEW.</span>
             </span>
           </h2>

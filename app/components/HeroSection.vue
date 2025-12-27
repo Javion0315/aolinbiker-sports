@@ -47,7 +47,7 @@
         </span>
         <span class="block text-[9vw] md:text-[6vw]">
           <!-- TODO(animation): y: 100% -> 0 -->
-          <span class="aolin-hero-line aolin-hero-line-2 block aolin-text-stroke">用汗水累積榮耀</span>
+          <span class="aolin-hero-line aolin-hero-line-2 block">用汗水累積榮耀</span>
         </span>
         <span class="block text-[9vw] md:text-[6vw]">
           <!-- TODO(animation): y: 100% -> 0 -->
