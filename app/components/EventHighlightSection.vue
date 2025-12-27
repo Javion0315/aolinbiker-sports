@@ -1,5 +1,6 @@
 <template>
-  <section id="highlights" class="relative overflow-hidden bg-black py-32">
+  <section id="highlights" ref="rootEl" class="relative overflow-hidden bg-black py-32"
+    :class="{ 'aolin-highlights--in': inView }">
     <!-- Background Graphic -->
     <div class="pointer-events-none absolute top-0 left-0 h-full w-full select-none opacity-[0.02]">
       <h2 class="absolute -left-20 -top-20 font-black italic leading-none text-[50vw] text-white">2026</h2>
@@ -9,13 +10,14 @@
       <!-- Header Section -->
       <div class="mb-12 flex flex-col gap-6 sm:mb-16 md:mb-20 md:flex-row md:items-end md:justify-between md:gap-8">
         <div class="min-w-0 flex-1">
-          <div class="mb-3 flex items-center gap-3 sm:mb-4 sm:gap-4">
+          <div class="aolin-highlights-header mb-3 flex items-center gap-3 sm:mb-4 sm:gap-4">
             <div class="h-[2px] w-8 bg-red-600 sm:w-12" />
             <span
               class="font-black uppercase tracking-[0.3em] text-[10px] text-red-500 sm:text-xs sm:tracking-[0.4em]">Annual
               Roadmap</span>
           </div>
-          <h2 class="font-black italic leading-[0.75] tracking-tighter text-5xl sm:text-6xl md:text-7xl lg:text-9xl">
+          <h2
+            class="aolin-highlights-title font-black italic leading-[0.75] tracking-tighter text-5xl sm:text-6xl md:text-7xl lg:text-9xl">
             <span class="block">2026</span>
             <span class="block">
               <span class="aolin-text-stroke text-white/20">ANNUAL</span><br class="hidden sm:block" />
@@ -23,7 +25,7 @@
             </span>
           </h2>
         </div>
-        <div class="hidden text-right md:block md:flex-shrink-0">
+        <div class="aolin-highlights-desc hidden text-right md:block md:flex-shrink-0">
           <p class="max-w-[350px] text-sm font-bold uppercase tracking-widest text-zinc-500">
             提前佈局你的賽季，在每一個轉折點證明實力。
           </p>
@@ -33,11 +35,11 @@
       <!-- 12 Months Grid -->
       <div class="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
         <div v-for="(item, idx) in yearCalendar" :key="item.num"
-          class="group relative aspect-square cursor-default overflow-hidden border-2 bg-zinc-900/50 p-4 transition-all duration-500 hover:scale-[1.02] hover:bg-zinc-800 sm:p-5 md:p-6 lg:p-8"
+          class="aolin-calendar-card group relative aspect-square cursor-default overflow-hidden border-2 bg-zinc-900/50 p-4 transition-all duration-500 hover:scale-[1.02] hover:bg-zinc-800 sm:p-5 md:p-5 lg:p-6"
           :class="[
             item.borderColor,
             item.isActive ? 'opacity-100 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' : 'opacity-50 grayscale'
-          ]">
+          ]" :style="{ animationDelay: `${idx * 50}ms` }">
           <!-- Background Image for active months -->
           <img v-if="item.imageUrl" :src="item.imageUrl" :alt="item.monthName"
             class="absolute inset-0 h-full w-full scale-110 object-cover opacity-40 grayscale transition-all duration-700 group-hover:scale-100 group-hover:opacity-60 group-hover:grayscale-0"
@@ -124,6 +126,8 @@
 </template>
 
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+
 // 導入圖片
 import redImg from '../assets/img/calendar/red.jpg'
 import red2Img from '../assets/img/calendar/red2.jpg'
@@ -264,4 +268,96 @@ const yearCalendar: MonthData[] = [
     imageUrl: orangeImg
   }
 ]
+
+// 動畫控制
+const rootEl = ref<HTMLElement | null>(null)
+const inView = ref(false)
+let io: IntersectionObserver | null = null
+
+const restart = () => {
+  inView.value = false
+  requestAnimationFrame(() => {
+    void rootEl.value?.offsetWidth
+    inView.value = true
+  })
+}
+
+onMounted(() => {
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false
+  if (reduce) {
+    inView.value = true
+    return
+  }
+
+  io = new IntersectionObserver(
+    (entries) => {
+      const e = entries[0]
+      if (!e) return
+      if (e.isIntersecting) restart()
+      else inView.value = false
+    },
+    { threshold: 0.25 }
+  )
+
+  if (rootEl.value) io.observe(rootEl.value)
+})
+
+onBeforeUnmount(() => {
+  io?.disconnect()
+  io = null
+})
 </script>
+
+<style scoped>
+/* 熱血動畫：進入視口時的淡入+縮放效果 */
+.aolin-calendar-card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aolin-highlights--in .aolin-calendar-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.aolin-highlights-header,
+.aolin-highlights-title,
+.aolin-highlights-desc {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aolin-highlights--in .aolin-highlights-header {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 100ms;
+}
+
+.aolin-highlights--in .aolin-highlights-title {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 200ms;
+}
+
+.aolin-highlights--in .aolin-highlights-desc {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 400ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .aolin-calendar-card,
+  .aolin-highlights-header,
+  .aolin-highlights-title,
+  .aolin-highlights-desc {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+</style>

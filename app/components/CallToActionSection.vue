@@ -6,7 +6,6 @@
     </div>
 
     <div class="relative z-10 mx-auto max-w-7xl px-4 text-center sm:px-6">
-      <!-- TODO(animation): 進入視窗時淡入 + scale（可用 CSS/GSAP） -->
       <div class="mx-auto max-w-3xl">
         <h2
           class="text-balance text-2xl font-black italic tracking-tight text-white leading-[1.5] sm:text-3xl md:text-4xl">
@@ -22,8 +21,7 @@
         </p>
 
         <div class="mt-14 flex justify-center">
-          <!-- TODO(animation): hover/tap 微互動（scale/rotate） -->
-          <a href="#"
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSevLIo0wxuPcNoUNaXBoAQGcumQo-HBCB9OKiTuq5GXQOoPAg/viewform?usp=send_form"
             class="aolin-cta-btn inline-flex items-center justify-center bg-black px-10 py-5 text-2xl font-black italic text-white shadow-2xl transition-all hover:bg-white hover:text-red-600 sm:px-16 sm:py-6 sm:text-4xl">
             JOIN NOW
           </a>
@@ -32,7 +30,7 @@
     </div>
 
     <div
-      class="aolin-cta-tags pointer-events-none absolute bottom-8 left-0 flex w-full justify-center gap-10 text-black/30 sm:bottom-10 sm:gap-20">
+      class="aolin-cta-tags pointer-events-none absolute bottom-8 left-0 flex w-full justify-center gap-6 text-black/30 sm:bottom-10 sm:gap-20 whitespace-nowrap">
       <span class="text-lg font-black italic tracking-widest sm:text-2xl">#影響綠</span>
       <span class="text-lg font-black italic tracking-widest sm:text-2xl">#紅勝</span>
       <span class="text-lg font-black italic tracking-widest sm:text-2xl">#大黃蜂</span>

@@ -17,9 +17,7 @@
                     <span
                         class="absolute -bottom-1 left-0 h-[2px] w-0 bg-red-500 transition-all duration-300 group-hover:w-full" />
                 </a>
-
-                <!-- TODO(animation): hover/tap 微互動（scale/skew），此處只用 Tailwind 做視覺 -->
-                <a href="#cta"
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSevLIo0wxuPcNoUNaXBoAQGcumQo-HBCB9OKiTuq5GXQOoPAg/viewform?usp=send_form"
                     class="bg-red-600 px-8 py-2 text-lg font-black italic text-white shadow-[0_0_20px_rgba(239,68,68,0.3)] transition-all hover:bg-white hover:text-red-600 [transform:skewX(-12deg)]">
                     <span class="inline-block [transform:skewX(12deg)]">JOIN NOW</span>
                 </a>
@@ -43,6 +41,7 @@ const isScrolled = ref(false)
 
 const navItems = [
     { label: 'EVENTS', href: '#announcement' },
+    { label: 'TEAM', href: '#teams' },
     { label: 'SPIRIT', href: '#spirit' },
     { label: 'GALLERY', href: '#gallery' },
     { label: 'COMMUNITY', href: '#cta' }

@@ -6,5 +6,7 @@
     <EntryLoader />
     <Navbar />
     <NuxtPage />
+    <!-- 全局回到頂部按鈕 -->
+    <ScrollToTop />
   </div>
 </template>

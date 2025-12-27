@@ -70,7 +70,7 @@
         </p>
 
         <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-center">
-          <a href="#cta"
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSevLIo0wxuPcNoUNaXBoAQGcumQo-HBCB9OKiTuq5GXQOoPAg/viewform?usp=send_form"
             class="bg-white px-10 py-4 text-2xl font-black italic text-black shadow-2xl transition-all hover:bg-red-600 hover:text-white [transform:skewX(-12deg)] sm:px-16 sm:py-5 sm:text-3xl">
             <span class="inline-block [transform:skewX(12deg)]">JOIN NOW</span>
           </a>

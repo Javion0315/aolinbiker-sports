@@ -27,19 +27,20 @@
                 <div>
                     <h4 class="mb-6 text-xs font-bold uppercase tracking-widest text-white">Resources</h4>
                     <ul class="space-y-4 text-sm text-zinc-500">
-                        <li><a href="#" class="transition-colors hover:text-red-500">Upcoming Events</a></li>
-                        <li><a href="#" class="transition-colors hover:text-red-500">Past Results</a></li>
-                        <li><a href="#" class="transition-colors hover:text-red-500">Safety Guidelines</a></li>
-                        <li><a href="#" class="transition-colors hover:text-red-500">Partner with us</a></li>
+                        <li><a href="#announcement" class="transition-colors hover:text-red-500">EVENTS</a></li>
+                        <li><a href="#teams" class="transition-colors hover:text-red-500">TEAM</a></li>
+                        <li><a href="#spirit" class="transition-colors hover:text-red-500">SPIRIT</a></li>
+                        <li><a href="#gallery" class="transition-colors hover:text-red-500">GALLERY</a></li>
+                        <li><a href="#cta" class="transition-colors hover:text-red-500">COMMUNITY</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="mb-6 text-xs font-bold uppercase tracking-widest text-white">Contact</h4>
                     <ul class="space-y-4 text-sm text-zinc-500">
-                        <li>hello@aolinbiker.sports</li>
-                        <li>Taipei, Taiwan</li>
-                        <li>+886 000 000 000</li>
+                        <li>aolinbiker.sports</li>
+                        <li>103臺北市大同區民權西路106號B1</li>
+                        <li>02 2550 9451</li>
                     </ul>
                 </div>
             </div>

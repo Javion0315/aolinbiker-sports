@@ -1,5 +1,5 @@
 <template>
-  <section id="teams" class="relative z-30 -mt-4 overflow-hidden bg-black py-0">
+  <section id="teams" class="relative z-30 overflow-hidden bg-black py-0">
     <div class="flex h-[850px] flex-col sm:h-[1200px] md:h-[80vh] md:flex-row">
       <div v-for="team in teams" :key="team.key"
         class="aolin-team-panel group relative h-[400px] cursor-pointer overflow-hidden border-r border-white/10 last:border-0 md:h-full">
